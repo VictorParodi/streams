@@ -53,13 +53,11 @@ class GoogleAuth extends React.Component {
     }
 
     render() {
-        console.log('PROPS --->', this.props);
         return <div>{this.renderAuthButton()}</div>
     }
 };
 
 const mapStateToProps = (state) => {
-    console.log('STATE -->', state);
     return {isSignedIn: state.auth.isSignedIn};
 }
 
