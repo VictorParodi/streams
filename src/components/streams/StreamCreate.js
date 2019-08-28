@@ -2,11 +2,13 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
 class StreamCreate extends React.Component {
-    renderInput({input, label}) {
+    renderInput({input, label, meta}) {
+        console.log(meta);
         return (
             <div className="field">
                 <label>{label}</label>
                 <input  {...input} />
+                <div>{meta.error}</div>
             </div>
         );
     }
@@ -26,6 +28,21 @@ class StreamCreate extends React.Component {
     }
 }
 
+const validate = (formValues) => {
+    let error = {};
+
+    if (!formValues.title) {
+        error.title = 'A title is needed';
+    }
+
+    if (!formValues.description) {
+        error.description = 'A description is needed';
+    }
+
+    return error;
+}
+
 export default reduxForm({
-    form: 'StreamCreate'
+    form: 'StreamCreate',
+    validate: validate
 })(StreamCreate);
