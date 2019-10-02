@@ -51,7 +51,8 @@ export const editStream = (id, formValues) => {
 
 export const deleteStream = (id) => {
     return async (dispatch, getState) => {
-        await streams.delete(`/stream/${id}`);
+        await streams.delete(`/streams/${id}`);
         dispatch({type: DELETE_STREAM, payload: id});
+        history.push('/');
     }
 }
